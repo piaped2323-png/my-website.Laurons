@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <style>
+        .btn-group button {
+          background-color: #12d432;
+          border-radius: 29px;
+          color: white;
+          padding: 15px 32px;
+          cursor: pointer;
+          float: right;
+        }
+    
+        .btn-group button:hover {
+          background-color: rgb(148, 43, 180)
+        }
+      </style>
+    
+      <body>
+        <h1>     
+        <div class="btn-group">
+          <button>Cat</button>
+          <button>Me</button>
+          <button>Fav movie</button>
+          <button>with weirdos</button>
+          <button>music</button>
+        
+        </div>
+      </body>
+    </html>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 style="text-align: center; font-size: 50px; font-family: cursive; color: rgb(255, 0, 179);"></h1>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+
+body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+          background-color:   rgb(45, 146, 62)  
+
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #1abb50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button:disabled {
+            background-color: #24d800;
+            cursor: not-allowed;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div class="gallery" id="gallery"></div>
+    <div class="pagination">
+        <button id="prev" onclick="changePage(-1)" disabled>Previous</button>
+        <button id="prev" onclick="changePage(-1)" button>1</button>
+        <button id="prev" onclick="changePage(-1)" button>2</button>
+        <button id="prev" onclick="changePage(-1)" button>3</button>
+        <button id="prev" onclick="changePage(-1)" button>4</button>
+        <button id="next" onclick="changePage(1)">Next</button>
+    </div>
+            
+    <script>
+        const images = [
+
+            "cute cat.jpg.jpg", "cat cute.jpg.jpg", "cutie cat.jpg.jpg", "ni hao cat.jpg.jpg", "tongkatsu cat.jpg.jpg",
+            "mee.jpg.jpg", "nihao me.jpg.jpg", "inihao me.jpg.jpg", "tongme.jpg.jpg", "tong katsu me.jpg.jpg",
+            "movie.jpg.jpg", "the rock.jpg.jpg", "alvin.jpg.jpg", "sheldon.jpg.jpg", "justin bieber.jpg.jpg",,
+            "with whoo.jpg.jpg", "pics.jpg.jpg", "disneyy.jpg.jpg", "rutorsssss.jpg.jpg", "sing.jpg.jpg",
+            "1975.jpg.jpg", "oliviaaa.jpg.jpg", "danel.jpg.jpg", "beaaaa.jpg.jpg", "colddplay.jpg.jpg",,
+        
+        
+        ];  
+
+        const itemsPerPage = 50;
+        let currentPage = 1;
+        
+        function displayImages() {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = Math.min(start + itemsPerPage, images.length);
+            const paginatedImages = images.slice(start, end);
+            
+            paginatedImages.forEach(img => {
+                const imageElement = document.createElement("img");
+                imageElement.src = img;
+                gallery.appendChild(imageElement);
+            });
+            
+            document.getElementById("prev").disabled = currentPage === 1;
+            document.getElementById("next").disabled = end >= images.length;
+        }
+        
+        function changePage(step) {
+            currentPage += step;
+            displayImages();
+        }
+        
+        displayImages();
+    </script>
+</body>
+</html>
